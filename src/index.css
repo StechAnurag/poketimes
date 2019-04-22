@@ -8,7 +8,14 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+.home .posts img{
+  position: absolute;
+  top: 3px;
+  left: -15px;
+  opacity: 0.6;
+  width: 18%;
+}
+.home .posts{
+  padding-left: 140px;
+  overflow: hidden;
 }
