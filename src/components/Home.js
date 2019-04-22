@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
-import axios from 'axios';
+//import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Indiatimes from '../indiatimes.png';
+import { connect } from 'react-redux';
 
 class Home extends Component {
-    state = {
+    /* state = {
         posts : []
     }
     componentDidMount () {
@@ -16,9 +17,10 @@ class Home extends Component {
             });
         });
 
-    }
+    } */
+    
     render(){
-        const { posts } = this.state;
+        const { posts } = this.props;
         const postList = posts.length ? (
             posts.map(post => {
                 return (
@@ -49,4 +51,10 @@ class Home extends Component {
     }
 }
 
-export default Home;
+const mapStateToProps = (state) =>{
+    return {
+        posts : state.posts
+    }
+}
+
+export default connect(mapStateToProps)(Home);

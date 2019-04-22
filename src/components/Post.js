@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import { connect } from 'react-redux';
+//import axios from 'axios';
 
 class Post extends Component{
-  state = {
+  /* state = {
     post : null
   }
   componentDidMount(){
@@ -14,14 +15,17 @@ class Post extends Component{
             post : res.data
           });
         });
-  }
+  } */
+
+
   render() {
-    const post = this.state.post ? (
+    console.log(this.props);
+    const post = this.props.post ? (
       <div className="post">
         <h4 className="center">
-          {this.state.post.title}
+          {this.props.post.title}
         </h4>
-        <p>{this.state.post.body}</p>
+        <p>{this.props.post.body}</p>
       </div>
     ) : (
       <div className="center">
@@ -36,4 +40,11 @@ class Post extends Component{
   }
 }
 
-export default Post;
+const mapStateToProps = (state, ownProps) =>{
+  let id = ownProps.match.params.post_id;
+  return {
+    post : state.posts.find(post => post.id === id)
+  }
+}
+
+export default connect(mapStateToProps)(Post);
